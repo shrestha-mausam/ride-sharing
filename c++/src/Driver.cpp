@@ -1,28 +1,36 @@
 #include "Driver.h"
 #include <iostream>
 
+using namespace std;
+
 namespace ridesharing {
 
-Driver::Driver(long id, const std::string& driverName, double driverRating) 
-    : driverId(id), name(driverName), rating(driverRating) {}
+    Driver::Driver(long id, const string& driverName, double driverRating)
+        : driverId(id), name(driverName), rating(driverRating) {}
 
-Driver::~Driver() {
-    // Clean up if needed
-}
+    Driver::~Driver() {}
 
-void Driver::addRide(Ride* ride) {
-    assignedRides.push_back(ride);
-}
+    void Driver::addRide(Ride* ride) {
+        assignedRides.push_back(ride);
+    }
 
-void Driver::getDriverInfo() const {
-    std::cout << "Driver ID: " << driverId << std::endl;
-    std::cout << "Name: " << name << std::endl;
-    std::cout << "Rating: " << rating << "/5.0" << std::endl;
-    std::cout << "Number of assigned rides: " << assignedRides.size() << std::endl;
-}
+    void Driver::getDriverInfo() const {
+        cout << "Driver ID: " << driverId << endl;
+        cout << "Name: " << name << endl;
+        cout << "Rating: " << rating << endl;
+        cout << "Number of assigned rides: " << assignedRides.size() << endl;
+        
+        if (!assignedRides.empty()) {
+            cout << "\nRide History:" << endl;
+            for (const auto& ride : assignedRides) {
+                cout << "\n-------------------" << endl;
+                ride->rideDetails();
+            }
+        }
+    }
 
-const std::vector<Ride*>& Driver::getAssignedRides() const {
-    return assignedRides;
-}
+    const vector<Ride*>& Driver::getAssignedRides() const {
+        return assignedRides;
+    }
 
 } // namespace ridesharing 

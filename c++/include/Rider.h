@@ -5,16 +5,18 @@
 #include <string>
 #include "Ride.h"
 
+using namespace std;
+
 namespace ridesharing {
 
     class Rider {
     private:
         long riderId;
-        std::string name;
-        std::vector<Ride*> requestedRides;
+        string name;
+        vector<Ride*> requestedRides;
 
     public:
-        Rider(long id, const std::string& riderName);
+        Rider(long id, const string& riderName);
         ~Rider();
 
         // Prevent copying
@@ -27,7 +29,7 @@ namespace ridesharing {
 
         void requestRide(Ride* ride);
         void viewRides() const;
-        const std::vector<Ride*>& getRequestedRides() const;
+        const vector<Ride*>& getRequestedRides() const;
     };
 
 } // namespace ridesharing

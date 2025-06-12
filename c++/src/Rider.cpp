@@ -1,31 +1,35 @@
 #include "Rider.h"
+#include <iostream>
+
+using namespace std;
 
 namespace ridesharing {
 
-Rider::Rider(long id, const std::string& riderName) 
-    : riderId(id), name(riderName) {}
+    Rider::Rider(long id, const string& riderName) 
+        : riderId(id), name(riderName) {}
 
-Rider::~Rider() {
-    // Clean up if needed
-}
+    Rider::~Rider() {}
 
-void Rider::requestRide(Ride* ride) {
-    requestedRides.push_back(ride);
-}
-
-void Rider::viewRides() const {
-    std::cout << "Rider ID: " << riderId << std::endl;
-    std::cout << "Name: " << name << std::endl;
-    std::cout << "Total Rides: " << requestedRides.size() << std::endl;
-    std::cout << "\nRide History:" << std::endl;
-    for (const auto& ride : requestedRides) {
-        std::cout << "\n-------------------" << std::endl;
-        ride->getRideInfo();
+    void Rider::requestRide(Ride* ride) {
+        requestedRides.push_back(ride);
     }
-}
 
-const std::vector<Ride*>& Rider::getRequestedRides() const {
-    return requestedRides;
-}
+    void Rider::viewRides() const {
+        cout << "Rider ID: " << riderId << endl;
+        cout << "Name: " << name << endl;
+        cout << "Total Rides: " << requestedRides.size() << endl;
+        
+        if (!requestedRides.empty()) {
+            cout << "\nRide History:" << endl;
+            for (const auto& ride : requestedRides) {
+                cout << "\n-------------------" << endl;
+                ride->rideDetails();
+            }
+        }
+    }
+
+    const vector<Ride*>& Rider::getRequestedRides() const {
+        return requestedRides;
+    }
 
 } // namespace ridesharing 

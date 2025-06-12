@@ -3,12 +3,23 @@
 
 #include "Ride.h"
 
+using namespace std;
+
 namespace ridesharing {
 
     class PremiumRide : public Ride {
+    private:
+        static constexpr double PREMIUM_RATE = 4.00;  // Premium rate per mile
+        static constexpr double MINIMUM_FARE = 10.00;  // Higher minimum fare for premium rides
+        static constexpr double SURGE_MULTIPLIER = 1.5;  // Surge pricing multiplier
+
     public:
-        PremiumRide(long id, const std::string& pickup, const std::string& dropoff, double fare);
-        void getRideInfo() const override;
+        PremiumRide(long id, const string& pickup, const string& dropoff, double distance);
+        ~PremiumRide() override = default;
+
+        // Override virtual methods
+        double calculateFare() override;
+        void rideDetails() const override;
     };
 
 } // namespace ridesharing

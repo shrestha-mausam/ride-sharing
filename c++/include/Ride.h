@@ -2,20 +2,22 @@
 #define RIDE_H
 
 #include <string>
-#include <iostream>
+
+using namespace std;
 
 namespace ridesharing {
 
     class Ride {
     protected:
         long rideId;
-        std::string pickupLocation;
-        std::string dropoffLocation;
+        string pickupLocation;
+        string dropoffLocation;
+        double distance;
         double fare;
 
     public:
         // Constructor
-        Ride(long id, const std::string& pickup, const std::string& dropoff, double fare);
+        Ride(long id, const string& pickup, const string& dropoff, double dist);
 
         // Virtual destructor for proper inheritance
         virtual ~Ride() = default;
@@ -28,14 +30,16 @@ namespace ridesharing {
         Ride(Ride&&) noexcept = default;
         Ride& operator=(Ride&&) noexcept = default;
 
+        // Virtual methods
+        virtual double calculateFare() = 0;
+        virtual void rideDetails() const;
+
         // Getters
         long getRideId() const;
-        const std::string& getPickupLocation() const;
-        const std::string& getDropoffLocation() const;
+        const string& getPickupLocation() const;
+        const string& getDropoffLocation() const;
+        double getDistance() const;
         double getFare() const;
-
-        // Virtual methods
-        virtual void getRideInfo() const;
     };
 
 } // namespace ridesharing
