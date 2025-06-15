@@ -51,9 +51,24 @@ gst Main.st
 ## Project Structure
 ```
 .
-├── c++/          # C++ implementation
-└── smalltalk/    # GNU Smalltalk implementation
-    └── src/      # Source files
+├── c++/                    # C++ implementation
+│   ├── src/               # Source files
+│   │   ├── main.cpp
+│   │   ├── Ride.cpp
+│   │   ├── StandardRide.cpp
+│   │   ├── PremiumRide.cpp
+│   │   ├── Driver.cpp
+│   │   └── Rider.cpp
+│   ├── include/           # Header files
+│   │   ├── Ride.h
+│   │   ├── StandardRide.h
+│   │   ├── PremiumRide.h
+│   │   ├── Driver.h
+│   │   └── Rider.h
+│   └── CMakeLists.txt     # Build configuration
+│
+└── smalltalk/             # GNU Smalltalk implementation
+    └── src/              # Source files
         ├── Ride.st
         ├── StandardRide.st
         ├── PremiumRide.st
